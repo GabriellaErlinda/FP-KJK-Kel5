@@ -19,7 +19,9 @@ Teknologi Informasi memiliki sebuah jaringan komputer dengan detail sebagai beri
 ![WhatsApp Image 2024-12-23 at 15 39 50_78edd46a](https://github.com/user-attachments/assets/14ce0151-f2b7-416f-ac47-d43be6dc96d1)
 
 ## Pembagian IP
+![image](https://github.com/user-attachments/assets/c5994b5f-ddb9-4f64-85cd-083c4c534f45)
 ![image](https://github.com/user-attachments/assets/f795c0a5-3bf1-4459-b919-879279963088)
+
 
 ## Routing
 ### Router-DPTSI
