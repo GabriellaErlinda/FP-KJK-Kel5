@@ -52,40 +52,69 @@ write memory
 ```
 
 ### Router-TW2
+![image](https://github.com/user-attachments/assets/d94de209-079b-42e7-8aa2-1744cde64464)
+
 ```
-enable
-configure terminal
+conf t
+interface f0/0
+ ip address 192.168.0.10 255.255.255.252
+ no shutdown
 
-# Route ke network lantai 7 (Kelas)
-ip route 192.168.0.0 255.255.255.0 192.168.1.65     # via Router-L7
+interface f1/0
+ ip address 192.168.0.17 255.255.255.248
+ no shutdown
 
-# Route ke network lantai 9 (Lab)
-ip route 192.168.1.0 255.255.255.192 192.168.1.65   # via Router-L9
+interface f2/0
+ ip address 192.168.0.65 255.255.255.192
+ no shutdown
 
-# Default route ke DPTSI
-ip route 0.0.0.0 0.0.0.0 192.168.1.70
+ip route 192.168.0.0 255.255.255.252 192.168.0.9
+ip route 192.168.0.4 255.255.255.252 192.168.0.9
+ip route 192.168.1.0 255.255.255.0 192.168.0.18
+exit
 
 write memory
 ```
 
 ### Router-L7
-```
-enable
-configure terminal
+![image](https://github.com/user-attachments/assets/8ed93093-5f7d-4162-b894-09c2d2974e43)
 
-# Default route ke TW2
-ip route 0.0.0.0 0.0.0.0 192.168.1.66
+```
+conf t
+interface f0/0
+ ip address 192.168.0.18 255.255.255.248
+ no shutdown
+
+interface f1/0
+ ip address 192.168.1.1 255.255.255.0
+ no shutdown
+
+ip route 192.168.0.0 255.255.255.252 192.168.0.17
+ip route 192.168.0.4 255.255.255.252 192.168.0.17
+ip route 192.168.0.64 255.255.255.192 192.168.0.17
+exit
 
 write memory
+
 ```
 
 ### Router-L9
-```
-enable
-configure terminal
+![image](https://github.com/user-attachments/assets/07aa004c-e8e2-4c6d-8048-d0ba8df32858)
 
-# Default route ke TW2
-ip route 0.0.0.0 0.0.0.0 192.168.1.66
+```
+conf t
+interface f0/0
+ ip address 192.168.0.66 255.255.255.192
+ no shutdown
+
+interface f1/0
+ ip address 192.168.0.129 255.255.255.192
+ no shutdown
+
+ip route 192.168.0.0 255.255.255.252 192.168.0.65
+ip route 192.168.0.4 255.255.255.252 192.168.0.65
+ip route 192.168.1.0 255.255.255.0 192.168.0.65
+exit
 
 write memory
 ```
@@ -102,6 +131,16 @@ iface eth0 inet static
 ```
 
 ### Kelas-701
+```
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.1.2
+	netmask 255.255.255.0
+	gateway 192.168.1.1
+	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+```
+
 ### Kelas-702
 ### Kelas-703
 ### Kelas-704
