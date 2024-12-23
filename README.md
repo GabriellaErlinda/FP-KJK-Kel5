@@ -26,12 +26,81 @@ Teknologi Informasi memiliki sebuah jaringan komputer dengan detail sebagai beri
 ## Routing
 ### Router-DPTSI
 ```
+enable
+configure terminal
+
+# Route ke network lantai 7 (Kelas)
+ip route 192.168.0.0 255.255.255.0 192.168.1.66     # via TW2
+
+# Route ke network lantai 9 (Lab)
+ip route 192.168.1.0 255.255.255.192 192.168.1.66   # via TW2
+
+# Route ke network server
+ip route 192.168.1.76 255.255.255.248 192.168.1.74  # via Router-L6
+
+write memory
 ```
 ### Router-L6
+```
+enable
+configure terminal
+
+# Default route ke DPTSI
+ip route 0.0.0.0 0.0.0.0 192.168.1.73
+
+write memory
+```
+
 ### Router-TW2
+```
+enable
+configure terminal
+
+# Route ke network lantai 7 (Kelas)
+ip route 192.168.0.0 255.255.255.0 192.168.1.65     # via Router-L7
+
+# Route ke network lantai 9 (Lab)
+ip route 192.168.1.0 255.255.255.192 192.168.1.65   # via Router-L9
+
+# Default route ke DPTSI
+ip route 0.0.0.0 0.0.0.0 192.168.1.70
+
+write memory
+```
+
 ### Router-L7
+```
+enable
+configure terminal
+
+# Default route ke TW2
+ip route 0.0.0.0 0.0.0.0 192.168.1.66
+
+write memory
+```
+
 ### Router-L9
+```
+enable
+configure terminal
+
+# Default route ke TW2
+ip route 0.0.0.0 0.0.0.0 192.168.1.66
+
+write memory
+```
 ### WebServer
+Konfigurasi di file /etc/network/interfaces:
+```
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+    address 192.168.1.78
+    netmask 255.255.255.248
+    gateway 192.168.1.77
+    up echo nameserver 8.8.8.8 > /etc/resolv.conf
+```
+
 ### Kelas-701
 ### Kelas-702
 ### Kelas-703
