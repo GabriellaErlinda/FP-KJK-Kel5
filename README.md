@@ -30,31 +30,33 @@ Perhitungan Subnet dapat diakses pada:
 ```
 enable
 conf t
-interface f0/0
- ip address DHCP
- no shutdown
+Router-DPTSI(config)# interface f0/0
+Router-DPTSI(config-if)# ip address DHCP
+Router-DPTSI(config-if)# no shutdown
+Router-DPTSI(config-if)# exit
 
-interface f1/0
- ip address 192.168.1.81 255.255.255.252
- no shutdown
- exit
+Router-DPTSI(config)# interface f1/0
+Router-DPTSI(config-if)# ip address 192.168.1.81 255.255.255.252
+Router-DPTSI(config-if)# no shutdown
+Router-DPTSI(config-if)# exit
 
-interface f2/0
- ip address 192.168.1.73 255.255.255.252
- no shutdown
- exit
-ip route 0.0.0.0 0.0.0.0 192.168.1.73
+Router-DPTSI(config)# interface f2/0
+Router-DPTSI(config-if)# ip address 192.168.1.73 255.255.255.252
+Router-DPTSI(config-if)# no shutdown
+Router-DPTSI(config-if)# exit
+
+Router-DPTSI(config)# ip route 0.0.0.0 0.0.0.0 f0/0
 
 # Route ke jaringan A5 melalui Router-L7
-ip route 192.168.0.0 255.255.255.0 192.168.1.66
+Router-DPTSI(config)# ip route 192.168.0.0 255.255.255.0 192.168.1.66
   
 # Route ke jaringan A4 melalui TW2
-ip route 192.168.1.64 255.255.255.248 192.168.1.65
+Router-DPTSI(config)# ip route 192.168.1.64 255.255.255.248 192.168.1.65
   
 # Route ke jaringan A6 melalui Router-L9
-ip route 192.168.1.0 255.255.255.192 192.168.1.67
+Router-DPTSI(config)# ip route 192.168.1.0 255.255.255.192 192.168.1.67
 
-write memory
+Router-DPTSI# write memory
 ```
 ### Router-L6
 ```
