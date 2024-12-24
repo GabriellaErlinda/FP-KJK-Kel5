@@ -16,12 +16,12 @@ Teknologi Informasi memiliki sebuah jaringan komputer dengan detail sebagai beri
 - semua jaringan terhubung oleh router utama (backbone) yang diletakkan di gedung riset center di DPTSI.
 
 ## Topologi GNS3
-![WhatsApp Image 2024-12-23 at 15 39 50_78edd46a](https://github.com/user-attachments/assets/14ce0151-f2b7-416f-ac47-d43be6dc96d1)
+![image](https://github.com/user-attachments/assets/07b01910-f4a6-4de1-b478-9efbf8a4f4b1)
 
 ## Pembagian IP
-![image](https://github.com/user-attachments/assets/c5994b5f-ddb9-4f64-85cd-083c4c534f45)
-![image](https://github.com/user-attachments/assets/f795c0a5-3bf1-4459-b919-879279963088)
-
+![image](https://github.com/user-attachments/assets/f795c0a5-3bf1-4459-b919-879279963088) <br>
+Perhitungan Subnet dapat diakses pada: 
+[Sheets Perhitungan](https://docs.google.com/spreadsheets/d/1x6jne5dLVpQbpKo1pIfwNDZ7qPB0WZCtEuqpbexVY_I/edit?usp=sharing)
 
 ## Routing
 ### Router-DPTSI
@@ -99,16 +99,14 @@ write memory
 ```
 
 ### Router-L9
-![image](https://github.com/user-attachments/assets/07aa004c-e8e2-4c6d-8048-d0ba8df32858)
-
 ```
 conf t
 interface f0/0
- ip address 192.168.0.66 255.255.255.192
+ ip address 192.168.1.67 255.255.255.248
  no shutdown
 
 interface f1/0
- ip address 192.168.0.129 255.255.255.192
+ ip address 192.168.1.1 255.255.255.192
  no shutdown
 
 ip route 192.168.0.0 255.255.255.252 192.168.0.65
@@ -135,14 +133,58 @@ iface eth0 inet static
 # Static config for eth0
 auto eth0
 iface eth0 inet static
-	address 192.168.1.2
+	address 192.168.0.2
 	netmask 255.255.255.0
-	gateway 192.168.1.1
+	gateway 192.168.0.1
 	up echo nameserver 192.168.0.1 > /etc/resolv.conf
 ```
 
 ### Kelas-702
+```
+auto eth0
+iface eth0 inet static
+	address 192.168.0.3
+	netmask 255.255.255.0
+	gateway 192.168.0.1
+	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+```
+
 ### Kelas-703
+```
+auto eth0
+iface eth0 inet static
+	address 192.168.0.4
+	netmask 255.255.255.0
+	gateway 192.168.0.1
+	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+```
+
 ### Kelas-704
+```
+auto eth0
+iface eth0 inet static
+	address 192.168.0.5
+	netmask 255.255.255.0
+	gateway 192.168.0.1
+	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+```
+
 ### Lab-901
+```
+auto eth0
+iface eth0 inet static
+	address 192.168.1.2
+	netmask 255.255.255.192
+	gateway 192.168.1.1
+	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+```
+
 ### Lab-902
+```
+auto eth0
+iface eth0 inet static
+	address 192.168.1.3
+	netmask 255.255.255.192
+	gateway 192.168.1.1
+	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+```
