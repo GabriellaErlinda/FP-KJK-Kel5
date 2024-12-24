@@ -177,13 +177,13 @@ iface eth0 inet static
 
 ### Kelas-701
 ```
-# Static config for eth0
 auto eth0
 iface eth0 inet static
 	address 192.168.0.2
 	netmask 255.255.255.0
 	gateway 192.168.0.1
-	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+	up echo nameserver 8.8.8.8 > /etc/resolv.conf
+        up echo nameserver 8.8.4.4 >> /etc/resolv.conf
 ```
 
 ### Kelas-702
@@ -193,7 +193,8 @@ iface eth0 inet static
 	address 192.168.0.3
 	netmask 255.255.255.0
 	gateway 192.168.0.1
-	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+	up echo nameserver 8.8.8.8 > /etc/resolv.conf
+        up echo nameserver 8.8.4.4 >> /etc/resolv.conf
 ```
 
 ### Kelas-703
@@ -203,7 +204,8 @@ iface eth0 inet static
 	address 192.168.0.4
 	netmask 255.255.255.0
 	gateway 192.168.0.1
-	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+	up echo nameserver 8.8.8.8 > /etc/resolv.conf
+        up echo nameserver 8.8.4.4 >> /etc/resolv.conf
 ```
 
 ### Kelas-704
@@ -213,7 +215,8 @@ iface eth0 inet static
 	address 192.168.0.5
 	netmask 255.255.255.0
 	gateway 192.168.0.1
-	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+	up echo nameserver 8.8.8.8 > /etc/resolv.conf
+        up echo nameserver 8.8.4.4 >> /etc/resolv.conf
 ```
 
 ### Lab-901
@@ -223,7 +226,8 @@ iface eth0 inet static
 	address 192.168.1.2
 	netmask 255.255.255.192
 	gateway 192.168.1.1
-	up echo nameserver 192.168.1.1 > /etc/resolv.conf
+	up echo nameserver 8.8.8.8 > /etc/resolv.conf
+        up echo nameserver 8.8.4.4 >> /etc/resolv.conf
 ```
 
 ### Lab-902
@@ -233,5 +237,6 @@ iface eth0 inet static
 	address 192.168.1.3
 	netmask 255.255.255.192
 	gateway 192.168.1.1
-	up echo nameserver 192.168.1.1 > /etc/resolv.conf
+	up echo nameserver 8.8.8.8 > /etc/resolv.conf
+        up echo nameserver 8.8.4.4 >> /etc/resolv.conf
 ```
