@@ -241,3 +241,16 @@ iface eth0 inet static
 	up echo nameserver 8.8.8.8 > /etc/resolv.conf
         up echo nameserver 8.8.4.4 >> /etc/resolv.conf
 ```
+
+## Ping Test
+#### DPTSI
+![DPTSI](https://github.com/user-attachments/assets/0311101d-d4b0-4e9d-9078-76de782c72bc)
+#### TW2
+![TW2](https://github.com/user-attachments/assets/2a4c42dd-1bbc-4e48-928a-53244bb508fd)
+#### Router-L6
+![Router-L6](https://github.com/user-attachments/assets/abcbba7b-d0d5-43ad-a85d-0338538feac5)
+#### Router-L7
+![Router-L7](https://github.com/user-attachments/assets/616af495-061f-490a-8ed3-8b8ebfc97edf)
+#### Router-L9
+![Router-L9](https://github.com/user-attachments/assets/9028ca8e-588f-44a0-96ee-58ec30eef808)
+
