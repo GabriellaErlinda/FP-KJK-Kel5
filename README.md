@@ -20,6 +20,8 @@ Teknologi Informasi memiliki sebuah jaringan komputer dengan detail sebagai beri
 
 ## Pembagian IP
 ![image](https://github.com/user-attachments/assets/f795c0a5-3bf1-4459-b919-879279963088) <br>
+![image](https://github.com/user-attachments/assets/868e8763-597b-40a6-a13e-461e19cd70b3)
+
 Perhitungan Subnet dapat diakses pada: 
 [Sheets Perhitungan](https://docs.google.com/spreadsheets/d/1x6jne5dLVpQbpKo1pIfwNDZ7qPB0WZCtEuqpbexVY_I/edit?usp=sharing)
 
@@ -27,51 +29,74 @@ Perhitungan Subnet dapat diakses pada:
 ### Router-DPTSI
 ```
 enable
-configure terminal
+conf t
+interface f0/0
+ ip address DHCP
+ no shutdown
 
-# Route ke network lantai 7 (Kelas)
-ip route 192.168.0.0 255.255.255.0 192.168.1.66     # via TW2
+interface f1/0
+ ip address 192.168.1.81 255.255.255.252
+ no shutdown
+ exit
 
-# Route ke network lantai 9 (Lab)
-ip route 192.168.1.0 255.255.255.192 192.168.1.66   # via TW2
+interface f2/0
+ ip address 192.168.1.73 255.255.255.252
+ no shutdown
+ exit
+ip route 0.0.0.0 0.0.0.0 192.168.1.73
 
-# Route ke network server
-ip route 192.168.1.76 255.255.255.248 192.168.1.74  # via Router-L6
+# Route ke jaringan A5 melalui Router-L7
+ip route 192.168.0.0 255.255.255.0 192.168.1.66
+  
+# Route ke jaringan A4 melalui TW2
+ip route 192.168.1.64 255.255.255.248 192.168.1.65
+  
+# Route ke jaringan A6 melalui Router-L9
+ip route 192.168.1.0 255.255.255.192 192.168.1.67
 
 write memory
 ```
 ### Router-L6
 ```
 enable
-configure terminal
+conf t
+  # Route ke jaringan A5 melalui Router-L7
+  ip route 192.168.0.0 255.255.255.0 192.168.1.66
 
-# Default route ke DPTSI
-ip route 0.0.0.0 0.0.0.0 192.168.1.73
+  # Route ke jaringan A4 melalui TW2
+  ip route 192.168.1.64 255.255.255.248 192.168.1.65
+
+  # Route ke jaringan A6 melalui Router-L9
+  ip route 192.168.1.0 255.255.255.192 192.168.1.67
+
+  # Route ke jaringan A3 melalui Router-DPTSI
+  ip route 192.168.1.72 255.255.255.252 192.168.1.73
 
 write memory
 ```
 
 ### Router-TW2
-![image](https://github.com/user-attachments/assets/d94de209-079b-42e7-8aa2-1744cde64464)
-
 ```
 conf t
 interface f0/0
- ip address 192.168.0.10 255.255.255.252
+ ip address 192.168.1.74 255.255.255.252
  no shutdown
 
 interface f1/0
- ip address 192.168.0.17 255.255.255.248
+ ip address 192.168.1.65 255.255.255.248
  no shutdown
 
-interface f2/0
- ip address 192.168.0.65 255.255.255.192
- no shutdown
+# Route ke jaringan A5 melalui Router-L7
+ip route 192.168.0.0 255.255.255.0 192.168.1.66
 
-ip route 192.168.0.0 255.255.255.252 192.168.0.9
-ip route 192.168.0.4 255.255.255.252 192.168.0.9
-ip route 192.168.1.0 255.255.255.0 192.168.0.18
-exit
+# Route ke jaringan A6 melalui Router-L9
+ip route 192.168.1.0 255.255.255.192 192.168.1.67
+
+# Route ke jaringan A1 melalui Router-DPTSI
+ip route 192.168.1.80 255.255.255.252 192.168.1.73
+
+# Route ke jaringan A2 melalui Router-L6
+ip route 192.168.1.76 255.255.255.252 192.168.1.77
 
 write memory
 ```
@@ -80,38 +105,58 @@ write memory
 ![image](https://github.com/user-attachments/assets/8ed93093-5f7d-4162-b894-09c2d2974e43)
 
 ```
+enable
 conf t
 interface f0/0
  ip address 192.168.0.18 255.255.255.248
  no shutdown
+ exit
 
 interface f1/0
  ip address 192.168.1.1 255.255.255.0
  no shutdown
+ exit
 
-ip route 192.168.0.0 255.255.255.252 192.168.0.17
-ip route 192.168.0.4 255.255.255.252 192.168.0.17
-ip route 192.168.0.64 255.255.255.192 192.168.0.17
-exit
+# Route ke jaringan A4 melalui TW2
+ip route 192.168.1.64 255.255.255.248 192.168.1.65
+
+# Route ke jaringan A6 melalui Router-L9
+ip route 192.168.1.0 255.255.255.192 192.168.1.67
+
+# Route ke jaringan A1 melalui Router-DPTSI
+ip route 192.168.1.80 255.255.255.252 192.168.1.73
+
+# Route ke jaringan A2 melalui Router-L6
+ip route 192.168.1.76 255.255.255.252 192.168.1.77
 
 write memory
-
 ```
 
 ### Router-L9
 ```
+enable
 conf t
 interface f0/0
  ip address 192.168.1.67 255.255.255.248
  no shutdown
+ exit
 
 interface f1/0
  ip address 192.168.1.1 255.255.255.192
  no shutdown
+ exit
 
-ip route 192.168.0.0 255.255.255.252 192.168.0.65
-ip route 192.168.0.4 255.255.255.252 192.168.0.65
-ip route 192.168.1.0 255.255.255.0 192.168.0.65
+# Route ke jaringan A5 melalui Router-L7
+ip route 192.168.0.0 255.255.255.0 192.168.1.66
+
+# Route ke jaringan A4 melalui TW2
+ip route 192.168.1.64 255.255.255.248 192.168.1.65
+
+# Route ke jaringan A1 melalui Router-DPTSI
+ip route 192.168.1.80 255.255.255.252 192.168.1.73
+
+# Route ke jaringan A2 melalui Router-L6
+ip route 192.168.1.76 255.255.255.252 192.168.1.77
 exit
 
 write memory
@@ -123,9 +168,9 @@ Konfigurasi di file /etc/network/interfaces:
 auto eth0
 iface eth0 inet static
     address 192.168.1.78
-    netmask 255.255.255.248
+    netmask 255.255.255.252
     gateway 192.168.1.77
-    up echo nameserver 8.8.8.8 > /etc/resolv.conf
+    up echo nameserver 192.168.1.77 > /etc/resolv.conf
 ```
 
 ### Kelas-701
@@ -176,7 +221,7 @@ iface eth0 inet static
 	address 192.168.1.2
 	netmask 255.255.255.192
 	gateway 192.168.1.1
-	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+	up echo nameserver 192.168.1.1 > /etc/resolv.conf
 ```
 
 ### Lab-902
@@ -186,5 +231,5 @@ iface eth0 inet static
 	address 192.168.1.3
 	netmask 255.255.255.192
 	gateway 192.168.1.1
-	up echo nameserver 192.168.0.1 > /etc/resolv.conf
+	up echo nameserver 192.168.1.1 > /etc/resolv.conf
 ```
