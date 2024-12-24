@@ -253,4 +253,27 @@ iface eth0 inet static
 ![Router-L7](https://github.com/user-attachments/assets/616af495-061f-490a-8ed3-8b8ebfc97edf)
 #### Router-L9
 ![Router-L9](https://github.com/user-attachments/assets/9028ca8e-588f-44a0-96ee-58ec30eef808)
+#### Client 701, 702, 703, 704
+![701](https://github.com/user-attachments/assets/4a2a6fbd-fb2e-4d2f-a1c6-3ebb5fa75960)
+![702](https://github.com/user-attachments/assets/eb9d7205-95f8-4857-b6d6-db23a0c15864)
+![703](https://github.com/user-attachments/assets/e39a070e-9e2d-439c-8637-0d8e62ab8812)
+![704](https://github.com/user-attachments/assets/31e34219-1364-4e49-9e95-596ee4491a6f)
+#### Lab 901, 902
+![901](https://github.com/user-attachments/assets/658a0f3f-f95d-43a4-b96c-6f0f04acb3da)
+![902](https://github.com/user-attachments/assets/07aacabe-0eb0-4bd0-b70a-941bc14f3090)
 
+## Konfigurasi WebServer
+File python `server.py` dapat dijalankan pada `/root` maka server akan dapat dihubungi oleh client
+- Pada console WebServer
+```
+cd root
+python3 server.py
+```
+![image](https://github.com/user-attachments/assets/62455146-0ff8-42ad-adf5-53335e97981a)
+
+- Pada console client
+```
+curl 192.168.1.78
+```
+![image](https://github.com/user-attachments/assets/364da601-d62e-4cb3-9d79-42743b258758)
+![image](https://github.com/user-attachments/assets/cc5eaa34-0f86-4a02-9a9a-3e5dabd4fb40)
