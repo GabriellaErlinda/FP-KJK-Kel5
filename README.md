@@ -298,18 +298,28 @@ Router-L6(config-if)# ip access-group PROTECT-WEBSERVER in
 ## Testing ACL
 ### Memperbolehkan koneksi HTTP/HTTPS ke Webserver
 - Melakukan koneksi menggunakan telnet
+
 ![image](https://github.com/user-attachments/assets/ac50b115-b8ca-4dba-afc5-2e1a81ecf2ca)
+
 - Melakukan ping ke webserver
+
 ![image](https://github.com/user-attachments/assets/997e23b7-ea41-4c94-8c89-47bfb33f191a)
+
 - Membuka web
+
 ![image](https://github.com/user-attachments/assets/0d510ab1-09bf-4662-b3a0-b66464b8b4b6)
 
 ### Mensimulasikan percobaan serangan ke Webserver (akan diblokir oleh ACL)
 - SSH attempt
+  
 ![image](https://github.com/user-attachments/assets/6921e2a3-62c4-444a-9d41-84fbf87dc558)
+
 - RDP attempt
+  
 ![image](https://github.com/user-attachments/assets/cd6d5db9-dc3f-4a74-8049-50b822d59db4)
+
 - Ping Flood
+
 ![image](https://github.com/user-attachments/assets/6a508a5e-2815-4b08-84c9-c9280ee5ceec)
 
 Dari hasil percobaan serangan yang telah dilakukan, dapat disimpulkan bahwa konfigurasi ACL bekerja dengan benar dan seperti yang diharapkan. Dengan menerapkan ACL, hanya port HTTP(80) dan HTTPS(443) yang diizinkan untuk tersambung dengan server. Selain itu, implementasi ACL tersebut juga memberi proteksi terhadap `Port Scanning`, serangan `Distributed Denial of Service (DDoS)`, dan `unauthorized protocol`.
