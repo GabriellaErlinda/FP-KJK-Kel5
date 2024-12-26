@@ -325,6 +325,54 @@ Router-L6(config-if)# ip access-group PROTECT-WEBSERVER in
 
 Dari hasil percobaan serangan yang telah dilakukan, dapat disimpulkan bahwa konfigurasi ACL bekerja dengan benar dan seperti yang diharapkan. Dengan menerapkan ACL, hanya port HTTP(80) dan HTTPS(443) yang diizinkan untuk tersambung dengan server. Selain itu, implementasi ACL tersebut juga memberi proteksi terhadap `Port Scanning`, serangan `Distributed Denial of Service (DDoS)`, dan `unauthorized protocol`.
 
+## Implementasi SSH
+Dikarenakan Router lantai 6 memiliki tugas untuk melindungi langsung Webserver, maka penting untuk memproteksi koneksi agar router lantai 6 hanya dapat diakses oleh orang tertentu saja, seperti admin. Apabila ada celah bagi orang yang tidak terautorisasi berhasil melakukan koneksi kepada Router tersebut, maka orang itu dapat dengan mudah mengubah konfigurasi ACL dan mengambil alih sistem server. Oleh karena itu, SSH memastikan agar router tidak dapat diakses oleh sembarang orang dengan mengimplementasikan username dan password untuk dapat melakukan koneksi.
+
+### Konfigurasi Router Lantai 6
+```
+Router-L6(config)# ip access-list extended PROTECT-WEBSERVER
+Router-L6(config-ext-nacl)# permit tcp any host 192.168.1.78 eq 80
+Router-L6(config-ext-nacl)# permit tcp any host 192.168.1.78 eq 443
+Router-L6(config-ext-nacl)# deny ip any host 192.168.1.78
+Router-L6(config-ext-nacl)# permit ip any any
+Router-L6(config)# interface f1/0
+Router-L6(config-if)# ip access-group PROTECT-WEBSERVER in
+
+Router-L6(config)#username admin secret  kelompok5
+Router-L6(config)# line vty 0 4
+Router-L6(config-line)# login local
+Router-L6(config-line)# transport input ssh
+
+
+Router-L6(config)# ip domain-name example.com
+Router-L6(config)# crypto key generate rsa modulus 2048
+Router-L6(config)# ip ssh version 2
+
+Router-L6(config)# banner motd #
+Selamat Datang di Router Lantai 6
+#
+
+Router-L6(config)# logging buffered 16384
+Router-L6(config)# logging console
+Router-L6(config)# service timestamps log datetime msec
+
+Router-L6(config)# enable secret kelompok5
+```
+
+### Testing SSH
+Pada Client, kita dapat melakukan koneksi ke Router lt 6 dengan menggunakan command
+```
+ssh -l admin -c aes128-cbc,3des-cbc,aes192-cbc 192.168.1.77
+```
+
+![image](https://github.com/user-attachments/assets/f0ee6054-8364-4ca5-b14e-34571ab11c26)
+
+Masukkan password : `kelompok5` dan kita telah berhasil melakukan koneksi SSH ke router. Disini kita dapat melakukan konfigurasi pada router.
+
+![image](https://github.com/user-attachments/assets/dc1f72b0-eeb9-4e57-8730-1d9b85bb4c74)
+
+
+
 
 
 
