@@ -312,7 +312,8 @@ Router-L6(config-if)# ip access-group PROTECT-WEBSERVER in
 ### Mensimulasikan percobaan serangan ke Webserver (akan diblokir oleh ACL)
 - SSH attempt
   
-![image](https://github.com/user-attachments/assets/6921e2a3-62c4-444a-9d41-84fbf87dc558)
+![image](https://github.com/user-attachments/assets/3587bde2-5fd2-4b58-a40d-9006bf4c4924)
+
 
 - RDP attempt
   
