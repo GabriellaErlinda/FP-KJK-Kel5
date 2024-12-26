@@ -2,11 +2,11 @@
 
 | Nama                            | NRP          |
 | ------------------------------- | ------------ |
-| Marcelinus Alvinanda            | `5027221012` |
+| Marcelinus Alvinanda Chrisantya | `5027221012` |
 | Gabriella Erlinda Wijaya        | `5027221018` |
 | Bintang Ryan Wardana            | `5027221022` |
 | Nicholas Marco Weinandra        | `5027221042` |
-| Jonathan Aditya                 | `5027221062` |
+| Jonathan Adithya Baswara        | `5027221062` |
 
 ## Daftar Isi
 - [Study Case](#study-case)
