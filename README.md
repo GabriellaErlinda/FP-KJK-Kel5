@@ -8,6 +8,18 @@
 | Nicholas Marco Weinandra        | `5027221042` |
 | Jonathan Aditya                 | `5027221062` |
 
+## Daftar Isi
+- [Study Case](##study-case)
+- [Topologi](##Topologi-GNS3)
+- [Pembagian IP](##Pembagian-IP)
+- [Routing](##Routing)
+	- [Ping Test](##Ping-Test)
+   	- [Konfigurasi Web Server](##Konfigurasi-Webserver)
+- [Implementasi ACL](##Implementasi-ACL-(Access-Control-List))
+	- [Testing ACL](##Testing-ACL)
+- [Implementasi SSH](##Implementasi-SSH)
+	- [Testing SSH](##Testing-SSH)
+
 ## Study Case
 Teknologi Informasi memiliki sebuah jaringan komputer dengan detail sebagai berikut:
 - 1 buah server di lantai 6 gedung perpustakaan. dalam server ini memiliki web service yang bisa diakses dari internal network.
@@ -359,7 +371,7 @@ Router-L6(config)# service timestamps log datetime msec
 Router-L6(config)# enable secret kelompok5
 ```
 
-### Testing SSH
+## Testing SSH
 Pada Client, kita dapat melakukan koneksi ke Router lt 6 dengan menggunakan command
 ```
 ssh -l admin -c aes128-cbc,3des-cbc,aes192-cbc 192.168.1.77
