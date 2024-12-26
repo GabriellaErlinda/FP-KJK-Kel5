@@ -297,15 +297,15 @@ Router-L6(config-if)# ip access-group PROTECT-WEBSERVER in
 
 ## Testing ACL
 ### Memperbolehkan koneksi HTTP/HTTPS ke Webserver
-- Melakukan koneksi menggunakan telnet
+- Membuka web
 
 ![image](https://github.com/user-attachments/assets/ac50b115-b8ca-4dba-afc5-2e1a81ecf2ca)
 
-- Melakukan ping ke webserver
+- Melakukan koneksi menggunakan telnet
 
 ![image](https://github.com/user-attachments/assets/997e23b7-ea41-4c94-8c89-47bfb33f191a)
 
-- Membuka web
+- Melakukan ping ke webserver
 
 ![image](https://github.com/user-attachments/assets/0d510ab1-09bf-4662-b3a0-b66464b8b4b6)
 
