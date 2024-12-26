@@ -9,16 +9,16 @@
 | Jonathan Aditya                 | `5027221062` |
 
 ## Daftar Isi
-- [Study Case](##study-case)
-- [Topologi](##Topologi-GNS3)
-- [Pembagian IP](##Pembagian-IP)
-- [Routing](##Routing)
-	- [Ping Test](##Ping-Test)
-   	- [Konfigurasi Web Server](##Konfigurasi-Webserver)
-- [Implementasi ACL](##Implementasi-ACL-(Access-Control-List))
-	- [Testing ACL](##Testing-ACL)
-- [Implementasi SSH](##Implementasi-SSH)
-	- [Testing SSH](##Testing-SSH)
+- [Study Case](#study-case)
+- [Topologi](#Topologi-GNS3)
+- [Pembagian IP](#Pembagian-IP)
+- [Routing](#Routing)
+	- [Ping Test](#Ping-Test)
+   	- [Konfigurasi Web Server](#Konfigurasi-Webserver)
+- [Implementasi ACL](#Implementasi-ACL-(Access-Control-List))
+	- [Testing ACL](#Testing-ACL)
+- [Implementasi SSH](#Implementasi-SSH)
+	- [Testing SSH](#Testing-SSH)
 
 ## Study Case
 Teknologi Informasi memiliki sebuah jaringan komputer dengan detail sebagai berikut:
